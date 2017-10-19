@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load static %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'CSS/CommonItems/categories.css' %}">    
+{% endblock custom_css %}
+{% block custom_scripts %}
+<script>
+$(document).ready(function() {
+    $('.CategoryParent').select2({
+        ajax: {
+            url: "ajax/getCategoryParents",
+            data: function(params) {
+                var query = {
+                    search: params.term
+                }
+                return query;
+            },
+            type: "GET",
+            success: function(json){
+                console.log(json);
+            }
+        }
+    });
+});
+</script>
+
+{% endblock custom_scripts %}
+
+{% block body_block %}
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>View Categories</h1>
+    </div>
+</div>
+
+<div class="container">
+
+    
+    <div class="form-group">
+        <label for="categorySearch" class="col-sm-2 control-label">Search Categories</label>
+        <div class="col-sm-3">
+            <input type="search" name="" id="categorySearch" class="form-control" value="" required="required" title="">
+        </div>
+
+        <label for="subCategorySearch" class="col-sm-2 control-label">Search SubCategories</label>
+        <div class="col-sm-4">
+            <input type="search" name="" id="subCategorySearch" class="form-control" value="" required="required" title="">
+        </div>
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-link" id="newCategory"><i id="addIcon" class="fa fa-plus" aria-hidden="true"></i></button>
+        </div>
+    </div>    
+    <div id="newCategoryForm" class="newCat">
+        <form action="" method="POST" class="form-horizontal" role="form">
+            {% csrf_token %}
+                <div class="form-group">
+                    <legend>New SubCategories</legend>
+                </div>
+                <div id="FormBody" class="form-group">
+                    <label for="CategoryParent" class="col-sm-1 col-xs-8 control-label">Category</label>
+                    <div class="col-sm-2 col-xs-8">
+                        <select id="CategoryParent" class="CategoryParent" name="CategoryParent">
+                        </select>
+                    </div>
+                    <label for="createdCatId" class="col-sm-2 col-xs-8 control-label">SubCategory ID</label>
+                    <div class="col-sm-2 col-xs-8">
+                        <input id="createdCatId" type="Number" name="createdCatId"/>
+                    </div>
+                    <label for="createdCatName" class="col-sm-2 col-xs-8 control-label">SubCategory Name</label>
+                    <div class="col-sm-2 col-xs-8">
+                        <input id="createdCatName" type="Text" name="createdCatName"/>
+                    </div>
+                    
+                    <div class="col-sm-1 col-xs-8">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+        </form>
+    </div>    
+    
+    <br>
+    <hr>
+    <table class="table table-hover table-responsive">
+        <thead>
+            <tr>
+                <th class="hidden-xs">Category</th>
+                <th>SubCategory</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in object_list %}
+            <tr>
+                <td class="hidden-xs category">{{category.Parent}}</td>
+                <td id={{category.pk}} class="subcategory">
+                    {{category}}
+                </td>
+                <td class="change">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </td>
+                <td class="delete">
+                    <i class="fa fa-trash" aria-hidden="true"></i>  
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}
+
+{% block jquery_block %}
+
+  <script src="{% static 'js/CommonItems/categories.js' %}"></script>
+
+
+{% endblock jquery_block %}

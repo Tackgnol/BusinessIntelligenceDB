@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+{% block custom_css %}
+    <link rel="stylesheet" href="{% static 'CSS/InsightSupplier/InsightSupplier.css' %}">    
+{% endblock custom_css %}
+{% block body_block %}
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-11 col-sm-offset-1">
+        <div class="col-xs-12 col-sm-9 col-sm-offset-1">
+            <h1>0000 - Placeholder</h1>
+        </div>
+    <div class="col-xs-11 col-sm-offset-1"> 
+        <div class="form-group">
+            <div class="searchBox">
+                <div class="col-sm-8 col-xs-12">
+                    <input id="searchField" type="text" name="searchField" placeholder="Search...">
+                </div>
+                <div class="col-sm-2 col-xs-12">
+                    <input id="costInvolved" type="checkbox" name="costInvolved">Cost involved
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row"> 
+        <div id="subMenu" class="col-xs-12 col-sm-9 col-sm-offset-1">
+            <h2>Sort by:</h2>
+            <div class="col-xs-12 col-sm-3 SubMenuItem Active">Alphabetically</div>
+            <div class="col-xs-12 col-sm-3 SubMenuItem">Price</div>
+            <div class="col-xs-12 col-sm-3 SubMenuItem">Rating</div>
+            <div class="col-xs-12 col-sm-3 SubMenuItem">Views</div>
+        </div>
+    </div>
+    <div class="row"> 
+        <div id="items" class="col-xs-12 col-sm-9 col-sm-offset-1 center">
+        </div>        
+    </div>
+    </div>
+</div>
+
+{% endblock body_block %}
+
+{% block jquery_block %}
+
+  <script src="{% static 'js//InsightSupplier/InsightSupplier.js' %}"></script>
+
+{% endblock jquery_block %}

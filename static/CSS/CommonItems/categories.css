@@ -1,0 +1,67 @@
+label {
+    line-height: 30px;
+}
+
+tr {
+    height: 40px;
+    padding: 0;
+}
+
+td {
+    height: 40px;
+}
+
+td:first-child {
+    width:35%;
+}
+td:nth-child(2) {
+    width: 59.6%;
+}
+
+td.change, td.delete {
+    
+    text-align: center;
+    color: white;
+    display: inline-block;
+    letter-spacing: 5px;
+    width: 0px;
+    transition: 0.2s linear;
+    opacity: 0;
+    border: 0 solid white;
+}
+
+td.change {
+    background-color: black;
+}
+td.delete {
+    background-color: #e74c3c;
+}
+
+tr:hover td.change, tr:hover td.delete {
+    width: 30px;
+    opacity: 1.0;
+}
+
+tr:hover td.change {
+    border-right: 1px solid white;
+}
+
+#Id {
+    width: 100px;
+}
+
+#newCategory {
+    color: greenyellow;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.CategoryParent {
+    width: 200px;
+}
+
+div.newCat {
+    display: none;
+    height: 150px;
+}
+
