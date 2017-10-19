@@ -42,7 +42,7 @@ function GetURLParameter(param)
     var URLValues = pageURL.split('&');
     for (var i = 0; i < URLValues.length; i++)
     {
-        var parameterName = URLValues[i].split('=');
+        var parameterName = URLValues[i].split('/');
         if (parameterName[0] == param)
         {
             return parameterName[1];
